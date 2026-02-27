@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বিরিয়ানি ফাইন্ডার | 64 Districts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1589302168068-964664d93cb0?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #eab308; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ca8a04; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <header class="hero-bg text-white py-16 px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-yellow-400 drop-shadow-lg">
+            <i class="fa-solid fa-bowl-food mr-2"></i> ইফতার বিরিয়ানি ফাইন্ডার 
+        </h1>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-gray-200">
+            ১৫ই রমজান থেকে শুরু হচ্ছে দেশব্যাপী মহাযজ্ঞ! ৬৪ জেলার কোথায়, কোন মসজিদে বিরিয়ানি দেওয়া হবে? 
+            খুঁজে বের করুন আর বিনা দাওয়াতে হাজির হয়ে যান! (আগে গেলে লেগপিস পাবেন) 🍗
+        </p>
+        
+        <div class="max-w-md mx-auto relative">
+            <input type="text" id="searchInput" placeholder="আপনার জেলা খুঁজুন... (যেমন: ঢাকা)" 
+                class="w-full px-5 py-3 rounded-full text-gray-800 focus:outline-none focus:ring-4 focus:ring-yellow-400 shadow-lg text-lg">
+            <i class="fa-solid fa-search absolute right-5 top-4 text-gray-400"></i>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-10">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">আজকের আয়োজন ও শিডিউল</h2>
+            <span class="bg-yellow-100 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full border border-yellow-300">
+                মোট ৬৪ জেলা
+            </span>
+        </div>
+
+        <div id="cardContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            </div>
+        
+        <div id="noResult" class="hidden text-center py-10">
+            <h3 class="text-2xl text-gray-500 font-bold">দুঃখিত ব্রাদার! এই নামে কোনো জেলা পাওয়া যায়নি 🥲</h3>
+            <p class="text-gray-400 mt-2">বানান ঠিক করে আবার খুঁজুন!</p>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white mt-auto rounded-t-3xl pt-10 pb-6 px-4 shadow-2xl border-t-4 border-yellow-500">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-6">
+            <div>
+                <h3 class="text-2xl font-bold text-yellow-400 mb-2">স্টোর-Fahix BD</h3>
+                <p class="text-gray-400 text-sm">কপিরাইট © ২০২৬ | সর্বস্বত্ব সংরক্ষিত</p>
+                <p class="text-gray-400 text-sm mt-1">ডেভেলপমেন্ট পার্টনার: <span class="text-white font-semibold">আপনার নাম (CSE Engineer)</span></p>
+            </div>
+            
+            <div class="flex flex-col gap-3">
+                <a href="https://www.facebook.com/fahixbd" target="_blank" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition px-6 py-2 rounded-full font-semibold shadow-lg mx-auto md:mx-0">
+                    <i class="fa-brands fa-facebook text-xl"></i> ফলো করুন ফেসবুকে
+                </a>
+                <a href="https://wa.me/8801317621550" target="_blank" class="flex items-center gap-2 bg-green-500 hover:bg-green-600 transition px-6 py-2 rounded-full font-semibold shadow-lg mx-auto md:mx-0">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> মতামত জানাতে WhatsApp
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Array of 64 Districts with automated dates & funny messages
+        const districtsList = [
+            "ঢাকা", "চট্টগ্রাম", "সিলেট", "রাজশাহী", "খুলনা", "বরিশাল", "রংপুর", "ময়মনসিংহ", 
+            "কুমিল্লা", "নোয়াখালী", "ফেনী", "ব্রাহ্মণবাড়িয়া", "রাঙ্গামাটি", "বান্দরবান", "খাগড়াছড়ি", 
+            "কক্সবাজার", "চাঁদপুর", "লক্ষ্মীপুর", "গাজীপুর", "নারায়ণগঞ্জ", "মুন্সীগঞ্জ", "মানিকগঞ্জ", 
+            "নরসিংদী", "ফরিদপুর", "মাদারীপুর", "রাজবাড়ী", "শরীয়তপুর", "গোপালগঞ্জ", "টাঙ্গাইল", 
+            "কিশোরগঞ্জ", "জামালপুর", "শেরপুর", "নেত্রকোনা", "বগুড়া", "জয়পুরহাট", "নওগাঁ", "নবাবগঞ্জ", 
+            "নাটোর", "পাবনা", "সিরাজগঞ্জ", "দিনাজপুর", "ঠাকুরগাঁও", "পঞ্চগড়", "নীলফামারী", 
+            "লালমনিরহাট", "কুড়িগ্রাম", "গাইবান্ধা", "যশোর", "ঝিনাইদহ", "মাগুরা", "নড়াইল", 
+            "কুষ্টিয়া", "চুয়াডাঙ্গা", "মেহেরপুর", "সাতক্ষীরা", "বাগেরহাট", "ভোলা", "পটুয়াখালী", 
+            "বরগুনা", "ঝালকাঠি", "পিরোজপুর", "হবিগঞ্জ", "মৌলভীবাজার", "সুনামগঞ্জ"
+        ];
+
+        const funnyMessages = [
+            "খাসির লেগপিস কনফার্ম! 🍖", "শুধু আলু পাবেন, মাংস আশা করবেন না 🥔", 
+            "আগে গেলে আগে পাবেন 🏃‍♂️", "বিনা দাওয়াতে নিশ্চিন্তে চলে যান 🤫", 
+            "বাসন সাথে করে নিয়ে যাবেন 🍽️", "গরুর মাংসের সুবাস! 🤤", 
+            "এখানে ভিড় বেশি, ধাক্কাধাক্কি নিষেধ 🥊", "তেহারি স্টাইল বিরিয়ানি 🥘",
+            "বিরিয়ানি রেডি, দৌড় দেন! 🚀", "কমিটির লোকজনের জন্য স্পেশাল ব্যবস্থা 😅"
+        ];
+
+        const mosqueSuffixes = ["কেন্দ্রীয় জামে মসজিদ", "শাহী জামে মসজিদ", "বায়তুল আমান মসজিদ", "বড় মসজিদ", "মাদরাসা মসজিদ"];
+
+        // Generate dynamic 64 array objects to save lines of code
+        const biryaniData = districtsList.map((district, index) => {
+            // Randomly assign Ramadan Date between 15 and 30
+            const ramadanDate = Math.floor(Math.random() * 16) + 15; 
+            const msg = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+            const mosque = district + " " + mosqueSuffixes[Math.floor(Math.random() * mosqueSuffixes.length)];
+            
+            return {
+                id: index,
+                district: district,
+                mosque: mosque,
+                date: `${ramadanDate} রমজান`,
+                time: "বিকাল ৫:৩০",
+                msg: msg,
+                status: ramadanDate === 15 ? "🔥 আজকে" : "⏳ আপকামিং"
+            };
+        });
+
+        // Sort data so "15 Ramadan" (Today) comes first
+        biryaniData.sort((a, b) => parseInt(a.date) - parseInt(b.date));
+
+        const container = document.getElementById('cardContainer');
+        const searchInput = document.getElementById('searchInput');
+        const noResult = document.getElementById('noResult');
+
+        // Function to render cards
+        function renderCards(data) {
+            container.innerHTML = '';
+            if(data.length === 0) {
+                noResult.classList.remove('hidden');
+                return;
+            }
+            noResult.classList.add('hidden');
+
+            data.forEach(item => {
+                const isToday = item.status.includes("আজকে");
+                const badgeColor = isToday ? "bg-red-500 animate-pulse" : "bg-blue-500";
+                
+                const cardHTML = `
+                    <div class="glass-card rounded-2xl p-5 relative overflow-hidden flex flex-col h-full">
+                        <div class="absolute top-0 right-0 ${badgeColor} text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                            ${item.status}
+                        </div>
+                        
+                        <div class="flex items-center gap-3 mb-4 mt-2">
+                            <div class="bg-yellow-100 p-3 rounded-full text-yellow-600">
+                                <i class="fa-solid fa-map-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">${item.district}</h3>
+                                <p class="text-sm text-gray-500 font-semibold"><i class="fa-solid fa-mosque"></i> ${item.mosque}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-lg p-3 mb-4 border border-gray-100 flex-grow">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-sm text-gray-600"><i class="fa-regular fa-calendar-check"></i> তারিখ:</span>
+                                <span class="font-bold text-indigo-600">${item.date}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600"><i class="fa-regular fa-clock"></i> সময়:</span>
+                                <span class="font-bold text-indigo-600">${item.time}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto bg-green-50 text-green-700 px-3 py-2 rounded-lg text-sm font-semibold border border-green-200 text-center">
+                            ${item.msg}
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHTML);
+            });
+        }
+
+        // Initial Render
+        renderCards(biryaniData);
+
+        // Real-time Search Logic
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredData = biryaniData.filter(item => 
+                item.district.toLowerCase().includes(searchTerm) || 
+                item.date.includes(searchTerm)
+            );
+            renderCards(filteredData);
+        });
+    </script>
+</body>
+</html>
